@@ -1,0 +1,16 @@
+build:
+  image: golang:1.5
+  environment:
+    - GO15VENDOREXPERIMENT=1
+  commands:
+    - sleep 10
+    - cd todo
+    - go get -v
+    - go test -v -cover
+
+compose:
+  database:
+    image: postgres:9.4.5
+    environment:
+      - POSTGRES_USER=postgres
+      - POSTGRES_DB=todo
